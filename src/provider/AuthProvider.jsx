@@ -5,6 +5,7 @@ import {
   signInWithPopup,
   onAuthStateChanged,
   signOut,
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
 import app from "./../firebase/firebase.config";
 import Loading from "../components/Loading";
@@ -18,6 +19,34 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   console.log(user);
+  const [authError, setAuthError] = useState("");
+
+  // To check auth state
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const handleSignUp = async (email, password) => {
+    setLoading(true);
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log("Sign up done");
+      return userCredential.user;
+    } catch (err) {
+      setAuthError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleGoogleLogin = async () => {
     setLoading(true);
@@ -45,18 +74,28 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
-    });
-
-    return () => unsubscribe();
-  }, []);
+  const validatePassword = (password) => {
+    if (password.length < 6) {
+      return "Password must be at least 6 characters long.";
+    }
+    if (!/[A-Z]/.test(password)) {
+      return "Password should contain capital letters.";
+    }
+    if (!/[\d\W]/.test(password)) {
+      return "Password should contain numbers or special characters.";
+    }
+    return null; // No errors
+  };
 
   const authInfo = {
     user,
+    setUser,
     loading,
+    setLoading,
+    authError,
+    setAuthError,
+    validatePassword,
+    handleSignUp,
     handleGoogleLogin,
     handleLogout,
   };

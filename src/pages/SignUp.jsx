@@ -1,26 +1,71 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
 import { FiUserPlus } from "react-icons/fi";
-import { TextInput, Label } from "flowbite-react";
+import { BiErrorCircle } from "react-icons/bi"; // Error icon
+import { CgSpinner } from "react-icons/cg"; // Loading spinner
+import { TextInput, Label, Alert } from "flowbite-react"; // Alert for errors
 import ExtraLogin from "../components/ExtraLogin";
+import { AuthContext } from "../provider/AuthProvider";
 
 const SignUp = () => {
+  const {
+    setUser,
+    loading,
+    setLoading,
+    authError,
+    setAuthError,
+    validatePassword,
+    handleSignUp,
+  } = useContext(AuthContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ name, email, password, confirmPassword });
+    setAuthError("");
+
+    if (password !== confirmPassword) {
+      setAuthError("Passwords do not match!");
+      return;
+    }
+
+    const error = validatePassword(password);
+    if (error) {
+      setAuthError(error);
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      await handleSignUp(email, password);
+      setUser({ displayName: name, email, photoURL: null });
+      console.log("User signed up successfully!");
+      navigate("/");
+    } catch (err) {
+      setAuthError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div className="flex justify-center items-center min-h-screen py-10">
       <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-4">
-          Join <span className="text-blue-500">TechTrail</span>
+          Join <span className="text-blue-500">TechTrails</span>
         </h2>
+
+        {/* Error Message */}
+        {authError && (
+          <Alert color="failure" icon={BiErrorCircle} className="mb-4">
+            {authError}
+          </Alert>
+        )}
+
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <Label
@@ -82,14 +127,24 @@ const SignUp = () => {
               required
             />
           </div>
+
+          {/* Sign-Up Button with Spinner */}
           <button
             type="submit"
-            className="w-full flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-lg transition"
+            className="w-full flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-lg transition disabled:opacity-50"
+            disabled={loading} // Disable button while loading
           >
-            <FiUserPlus /> Sign Up
+            {loading ? (
+              <CgSpinner className="animate-spin" size={20} />
+            ) : (
+              <FiUserPlus />
+            )}
+            {loading ? "Signing Up..." : "Sign Up"}
           </button>
         </form>
+
         <ExtraLogin />
+
         <p className="text-center text-sm text-gray-600 dark:text-gray-300 mt-4">
           Already have an account?{" "}
           <Link to="/auth/login" className="text-blue-500 hover:underline">

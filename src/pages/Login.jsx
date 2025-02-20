@@ -20,10 +20,10 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen py-10 bg-background-light dark:bg-background-dark">
+    <div className="flex justify-center items-center min-h-screen py-10">
       <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-4">
-          Welcome Back to <span className="text-blue-500">TechTrail</span>
+          Welcome Back to <span className="text-blue-500">TechTrails</span>
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>

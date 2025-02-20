@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Dropdown, Navbar, Avatar } from "flowbite-react";
+import { Dropdown, Navbar, Avatar, Button } from "flowbite-react";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { useContext, useState } from "react";
 import { ThemeContext } from "./../provider/ThemeProvider";
@@ -7,7 +7,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import { FiLogIn } from "react-icons/fi";
 
 const MyNavbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, handleLogout } = useContext(AuthContext);
   const { theme, toggleTheme } = useContext(ThemeContext);
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
@@ -36,22 +36,20 @@ const MyNavbar = () => {
             label={
               <Avatar
                 alt="User settings"
-                img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                img={user.photoURL}
                 rounded
                 className="h-10 aspect-square"
               />
             }
           >
             <Dropdown.Header>
-              <span className="block text-sm">Bonnie Green</span>
+              <span className="block text-sm">{user.displayName}</span>
               <span className="block truncate text-sm font-medium">
-                name@flowbite.com
+                {user.email}
               </span>
             </Dropdown.Header>
             <Dropdown.Divider />
-            <Dropdown.Item as={Link} to="/logout">
-              Sign out
-            </Dropdown.Item>
+            <Dropdown.Item onClick={handleLogout}>Sign out</Dropdown.Item>
           </Dropdown>
         ) : (
           <Link

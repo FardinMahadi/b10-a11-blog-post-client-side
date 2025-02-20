@@ -4,6 +4,7 @@ import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { useContext, useState } from "react";
 import { ThemeContext } from "./../provider/ThemeProvider";
 import { AuthContext } from "../provider/AuthProvider";
+import { FiLogIn } from "react-icons/fi";
 
 const MyNavbar = () => {
   const { user } = useContext(AuthContext);
@@ -28,34 +29,49 @@ const MyNavbar = () => {
           onChange={toggleTheme}
           size={20}
         />
-        <Dropdown
-          arrowIcon={false}
-          inline
-          label={
-            <Avatar
-              alt="User settings"
-              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-              rounded
-              className="h-10 aspect-square"
-            />
-          }
-        >
-          <Dropdown.Header>
-            <span className="block text-sm">Bonnie Green</span>
-            <span className="block truncate text-sm font-medium">
-              name@flowbite.com
-            </span>
-          </Dropdown.Header>
-          <Dropdown.Divider />
-          <Dropdown.Item as={Link} to="/logout">
-            Sign out
-          </Dropdown.Item>
-        </Dropdown>
+        {user ? (
+          <Dropdown
+            arrowIcon={false}
+            inline
+            label={
+              <Avatar
+                alt="User settings"
+                img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                rounded
+                className="h-10 aspect-square"
+              />
+            }
+          >
+            <Dropdown.Header>
+              <span className="block text-sm">Bonnie Green</span>
+              <span className="block truncate text-sm font-medium">
+                name@flowbite.com
+              </span>
+            </Dropdown.Header>
+            <Dropdown.Divider />
+            <Dropdown.Item as={Link} to="/logout">
+              Sign out
+            </Dropdown.Item>
+          </Dropdown>
+        ) : (
+          <Link
+            to="/auth/login"
+            className={`flex items-center gap-1 ${
+              theme === "dark"
+                ? "hover:text-text-secondary-dark"
+                : "hover:text-text-secondary-light"
+            }`}
+          >
+            <FiLogIn /> Login
+          </Link>
+        )}
         <Navbar.Toggle onClick={() => setIsOpen((prev) => !prev)} />
       </div>
 
       <Navbar.Collapse
-        className={`${isOpen ? "block" : "hidden"} md:flex md:items-center`}
+        className={`hidden md:flex md:items-center md:flex-row ${
+          isOpen ? "flex" : ""
+        }`}
       >
         {[
           { to: "/", label: "Home" },

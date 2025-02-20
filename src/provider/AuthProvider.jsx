@@ -3,6 +3,7 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import app from "./../firebase/firebase.config";
 
 export const AuthContext = createContext(null);
+
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
@@ -12,6 +13,7 @@ const AuthProvider = ({ children }) => {
   const authInfo = {
     user,
     setUser,
+    googleProvider,
   };
 
   return (

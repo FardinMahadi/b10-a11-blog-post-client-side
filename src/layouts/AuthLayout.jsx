@@ -1,9 +1,9 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import MyNavbar from "../components/MyNavbar";
-import { ThemeContext } from "../provider/ThemeProvider";
 import { Outlet } from "react-router-dom";
+import { ThemeContext } from "../provider/ThemeProvider";
 
-const MainLayout = () => {
+const AuthLayout = () => {
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -18,4 +18,4 @@ const MainLayout = () => {
   );
 };
 
-export default MainLayout;
+export default AuthLayout;

@@ -6,6 +6,9 @@ import FeaturedBlogs from "./../pages/FeaturedBlogs";
 import Wishlist from "./../pages/Wishlist";
 import Home from "../pages/Home";
 import ErrorPage from "../pages/ErrorPage";
+import AuthLayout from "./../layouts/AuthLayout";
+import SignUp from "./../pages/SignUp";
+import Login from "../pages/Login";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +35,21 @@ const router = createBrowserRouter([
       {
         path: "wishlist",
         element: <Wishlist />,
+      },
+    ],
+  },
+  // for auth route
+  {
+    path: "/auth",
+    element: <AuthLayout />,
+    children: [
+      {
+        path: "signup",
+        element: <SignUp />,
+      },
+      {
+        path: "login",
+        element: <Login />,
       },
     ],
   },

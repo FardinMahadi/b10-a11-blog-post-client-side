@@ -16,19 +16,21 @@ const MyNavbar = () => {
     <Navbar
       fluid
       rounded
-      className="bg-background-secondary-light text-text-light dark:bg-background-secondary-dark dark:text-text-dark"
+      className="container mx-auto bg-background-secondary-light text-text-light dark:bg-background-secondary-dark dark:text-text-dark"
     >
       <Navbar.Brand href="/" className="flex items-center gap-2">
         <img src="/favicon.png" className="h-8 w-8" alt="Logo" />
         <span className="text-xl font-semibold">TechTrails</span>
       </Navbar.Brand>
 
+      {/* user dropdown, theme controling and auth feature */}
       <div className="flex items-center gap-2 md:order-2">
         <DarkModeSwitch
           checked={theme === "dark"}
           onChange={toggleTheme}
           size={20}
         />
+        {/* dropdown */}
         {user ? (
           <Dropdown
             arrowIcon={false}
@@ -66,6 +68,7 @@ const MyNavbar = () => {
         <Navbar.Toggle onClick={() => setIsOpen((prev) => !prev)} />
       </div>
 
+      {/* nav links */}
       <Navbar.Collapse
         className={`hidden md:flex md:items-center md:flex-row ${
           isOpen ? "flex" : ""

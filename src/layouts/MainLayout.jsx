@@ -1,18 +1,12 @@
-import { useContext } from "react";
 import MyNavbar from "../components/MyNavbar";
-import { ThemeContext } from "../provider/ThemeProvider";
 import { Outlet } from "react-router-dom";
 
 const MainLayout = () => {
-  const { theme } = useContext(ThemeContext);
-
   return (
-    <div
-      className={`p-2 ${
-        theme === "dark" ? "bg-background-dark" : "bg-background-light"
-      }`}
-    >
-      <MyNavbar />
+    <div className={`bg-background-light dark:bg-background-dark`}>
+      <div className="p-2">
+        <MyNavbar />
+      </div>
       <Outlet />
     </div>
   );

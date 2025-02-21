@@ -11,7 +11,6 @@ const SignUp = () => {
   const {
     setUser,
     loading,
-    setLoading,
     authError,
     setAuthError,
     validatePassword,
@@ -38,8 +37,6 @@ const SignUp = () => {
       return;
     }
 
-    setLoading(true);
-
     try {
       await handleSignUp(email, password);
       setUser({ displayName: name, email, photoURL: null });
@@ -48,7 +45,6 @@ const SignUp = () => {
     } catch (err) {
       setAuthError(err.message);
     } finally {
-      setLoading(false);
     }
   };
 

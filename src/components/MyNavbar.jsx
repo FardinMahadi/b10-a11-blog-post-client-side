@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import { ThemeContext } from "./../provider/ThemeProvider";
 import { AuthContext } from "../provider/AuthProvider";
 import { FiLogIn } from "react-icons/fi";
+import userImg from "../assets/user.png";
 
 const MyNavbar = () => {
   const { user, handleLogout } = useContext(AuthContext);
@@ -16,7 +17,7 @@ const MyNavbar = () => {
     <Navbar
       fluid
       rounded
-      className="container mx-auto bg-background-secondary-light text-text-light dark:bg-background-secondary-dark dark:text-text-dark"
+      className="bg-background-secondary-light text-text-light dark:bg-background-secondary-dark dark:text-text-dark"
     >
       <Navbar.Brand href="/" className="flex items-center gap-2">
         <img src="/favicon.png" className="h-8 w-8" alt="Logo" />
@@ -38,7 +39,7 @@ const MyNavbar = () => {
             label={
               <Avatar
                 alt="User settings"
-                img={user.photoURL}
+                img={user.photoURL || userImg}
                 rounded
                 className="h-10 aspect-square"
               />

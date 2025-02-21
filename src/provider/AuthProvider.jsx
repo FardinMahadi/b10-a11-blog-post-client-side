@@ -6,6 +6,7 @@ import {
   onAuthStateChanged,
   signOut,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import app from "./../firebase/firebase.config";
 import Loading from "../components/Loading";
@@ -48,6 +49,26 @@ const AuthProvider = ({ children }) => {
     }
   };
 
+  const handleLogIn = async (email, password) => {
+    setLoading(true);
+    setAuthError("");
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      setUser(userCredential.user);
+      return { success: true, user: userCredential.user };
+    } catch (err) {
+      console.log("Error: ", err.message);
+      setAuthError(err.message);
+      return { success: false, error: err.message };
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleGoogleLogin = async () => {
     setLoading(true);
     try {
@@ -84,18 +105,18 @@ const AuthProvider = ({ children }) => {
     if (!/[\d\W]/.test(password)) {
       return "Password should contain numbers or special characters.";
     }
-    return null; // No errors
+    return null;
   };
 
   const authInfo = {
     user,
     setUser,
     loading,
-    setLoading,
     authError,
     setAuthError,
     validatePassword,
     handleSignUp,
+    handleLogIn,
     handleGoogleLogin,
     handleLogout,
   };

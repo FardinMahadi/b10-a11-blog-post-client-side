@@ -7,16 +7,19 @@ import { AuthContext } from "../provider/AuthProvider";
 import ExtraLogin from "../components/ExtraLogin";
 
 const Login = () => {
-  const { handleGoogleLogin } = useContext(AuthContext);
+  const { handleLogIn, handleGoogleLogin } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ email, password });
 
-    navigate("/");
+    const response = await handleLogIn(email, password);
+
+    if (response?.success) {
+      navigate("/");
+    }
   };
 
   return (

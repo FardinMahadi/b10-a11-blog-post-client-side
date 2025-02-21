@@ -4,10 +4,10 @@ import { Outlet } from "react-router-dom";
 const MainLayout = () => {
   return (
     <div className={`bg-background-light dark:bg-background-dark`}>
-      <div className="p-2">
+      <div className="container mx-auto p-2">
         <MyNavbar />
+        <Outlet />
       </div>
-      <Outlet />
     </div>
   );
 };

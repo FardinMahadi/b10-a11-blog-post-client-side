@@ -6,6 +6,7 @@ import { CgSpinner } from "react-icons/cg"; // Loading spinner
 import { TextInput, Label, Alert } from "flowbite-react"; // Alert for errors
 import ExtraLogin from "../components/ExtraLogin";
 import { AuthContext } from "../provider/AuthProvider";
+import axios from "axios";
 
 const SignUp = () => {
   const {
@@ -39,12 +40,15 @@ const SignUp = () => {
 
     try {
       await handleSignUp(email, password);
-      setUser({ displayName: name, email, photoURL: null });
+      const newUser = { displayName: name, email, photoURL: null };
+      setUser(newUser);
+
+      await axios.post("http://localhost:5000/users", newUser);
+
       console.log("User signed up successfully!");
       navigate("/");
     } catch (err) {
       setAuthError(err.message);
-    } finally {
     }
   };
 

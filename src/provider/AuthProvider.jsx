@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import app from "./../firebase/firebase.config";
 import Loading from "../components/Loading";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -19,8 +20,8 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  console.log(user);
   const [authError, setAuthError] = useState("");
+  const [blogs, setBlogs] = useState([]);
 
   // To check auth state
   useEffect(() => {
@@ -59,6 +60,13 @@ const AuthProvider = ({ children }) => {
         password
       );
       setUser(userCredential.user);
+
+      // fetch user data according to user email
+      const response = await axios.get(
+        `http://localhost:5000/users?email=${user.email}`
+      );
+      console.log(response);
+
       return { success: true, user: userCredential.user };
     } catch (err) {
       console.log("Error: ", err.message);
@@ -108,6 +116,20 @@ const AuthProvider = ({ children }) => {
     return null;
   };
 
+  // resources related stuffes
+  // blogs data fetch
+  useEffect(() => {
+    axios
+      .get("/blogs.json")
+      .then((response) => {
+        setBlogs(response.data);
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
+
   const authInfo = {
     user,
     setUser,
@@ -119,6 +141,7 @@ const AuthProvider = ({ children }) => {
     handleLogIn,
     handleGoogleLogin,
     handleLogout,
+    blogs,
   };
 
   if (loading) {

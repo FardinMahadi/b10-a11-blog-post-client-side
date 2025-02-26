@@ -1,0 +1,182 @@
+[
+  {
+    "author_email": "john.doe@example.com",
+    "title": "Understanding Serverless Architecture",
+    "short_description": "Serverless computing is a cloud execution model where the cloud provider dynamically manages the infrastructure. It helps developers focus on code without worrying about server management.",
+    "description": "Serverless architecture allows developers to build and run applications without provisioning or managing servers. It abstracts the infrastructure, enabling developers to focus on writing code while cloud providers handle scaling, load balancing, and maintenance. This article explores the core concepts of serverless computing, including Function as a Service (FaaS), event-driven architecture, and the benefits and challenges of adopting serverless solutions. We also discuss real-world use cases and best practices for optimizing performance and cost efficiency.",
+    "category": "Cloud Computing",
+    "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*D3tA2a5yJzMjP3oM8t_qgA.jpeg",
+    "date": "Feb 20, 2025"
+  },
+  {
+    "author_email": "jane.smith@example.com",
+    "title": "State Management in React: Context API vs Redux",
+    "short_description": "State management is a critical aspect of React applications. This article compares Context API and Redux, discussing when to use each and how they impact application scalability.",
+    "description": "State management plays a crucial role in React applications, ensuring that data flows efficiently between components. This article provides an in-depth comparison between Context API and Redux, highlighting their key differences, advantages, and drawbacks. Context API is built into React and is best suited for lightweight state management, while Redux offers a more structured approach for handling complex global states. We discuss when to use each approach, how they impact application performance, and best practices for implementing them effectively in real-world applications.",
+    "category": "Frontend Development",
+    "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*LpFZ4WPO1U3Ue5zQgC7PdA.jpeg",
+    "date": "Feb 22, 2025"
+  },
+  {
+    "author_email": "alice.williams@example.com",
+    "title": "Introduction to WebAssembly: The Future of Web Performance",
+    "short_description": "WebAssembly (WASM) is a binary instruction format that enables high-performance applications on the web. Learn how it works and why it's a game-changer for web development.",
+    "description": "WebAssembly (WASM) is a low-level, binary instruction format that allows developers to run high-performance code in web browsers. Unlike JavaScript, WebAssembly provides near-native execution speeds, making it ideal for performance-intensive applications such as gaming, video editing, and real-time simulations. This article explores the fundamentals of WebAssembly, how it integrates with JavaScript, and how developers can use it to build more efficient and scalable web applications. We also examine the advantages of WebAssembly over traditional JavaScript-based approaches.",
+    "category": "Web Development",
+    "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*w8N9rHnv9L2hUJp_U9kQ1A.jpeg",
+    "date": "Feb 25, 2025"
+  },
+  {
+    "author_email": "michael.johnson@example.com",
+    "title": "The Rise of Micro Frontends: Breaking Monolithic Frontends",
+    "short_description": "Micro frontends bring the microservices approach to frontend development, allowing teams to build scalable, independent UI components.",
+    "description": "Micro frontends extend the principles of microservices to the frontend, enabling organizations to build modular, scalable, and maintainable user interfaces. Traditional monolithic frontends often lead to scalability issues and slower development cycles. Micro frontends solve these problems by allowing teams to develop, deploy, and maintain independent frontend modules that work together seamlessly. This article covers the benefits of micro frontends, key architectural patterns, and real-world case studies from leading tech companies implementing this approach.",
+    "category": "Frontend Architecture",
+    "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*a4uB2g5dPzMjH3oM8t_xpA.jpeg",
+    "date": "Feb 28, 2025"
+  },
+  {
+    "author_email": "sarah.adams@example.com",
+    "title": "Exploring Deno: The Modern Alternative to Node.js",
+    "short_description": "Deno is a secure runtime for JavaScript and TypeScript. It improves upon Node.js by offering built-in TypeScript support and better security.",
+    "description": "Deno is an open-source runtime for JavaScript and TypeScript, created by Node.js co-founder Ryan Dahl to address the limitations of Node.js. Deno offers built-in TypeScript support, enhanced security with sandboxed execution, and a more modern standard library. In this article, we explore the key features of Deno, how it compares to Node.js, and why developers are considering it as a viable alternative. We also cover Deno's module system, performance benchmarks, and how to get started with Deno for backend development.",
+    "category": "Backend Development",
+    "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*qv7B3x9fLzMjH7oM8t_ypA.jpeg",
+    "date": "Mar 2, 2025"
+  },
+  {
+    "author_email": "daniel.lee@example.com",
+    "title": "A Deep Dive into Progressive Web Apps (PWAs)",
+    "short_description": "Progressive Web Apps (PWAs) combine the best of web and mobile applications, offering offline capabilities, push notifications, and enhanced user experiences.",
+    "description": "Progressive Web Apps (PWAs) bridge the gap between web and mobile applications, delivering a fast, engaging, and reliable user experience. This article explores the core technologies behind PWAs, such as Service Workers, Web App Manifests, and caching strategies. We also discuss how PWAs improve performance, increase user retention, and work offline. Additionally, we cover real-world use cases, best practices, and the steps to convert an existing web app into a PWA.",
+    "category": "Web Development",
+    "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*AqN0iRzG5oL9vZ7Kc8XGdw.jpeg",
+    "date": "Mar 5, 2025"
+  },
+  {
+    "author_email": "emma.jones@example.com",
+    "title": "GraphQL vs REST: Choosing the Right API for Your Project",
+    "short_description": "GraphQL and REST are two major API architectures. This article compares them in terms of flexibility, efficiency, and real-world use cases.",
+    "description": "When designing an API, developers often debate between GraphQL and REST. While REST APIs follow a structured, resource-based approach, GraphQL offers flexibility with declarative data fetching. This article compares the two architectures in terms of performance, complexity, security, and scalability. We analyze real-world case studies where companies have switched from REST to GraphQL and vice versa, helping developers decide which approach suits their projects best.",
+    "category": "API Development",
+    "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*KqGk9uPBlXZ2L-PYJbQTWQ.jpeg",
+    "date": "Mar 10, 2025"
+  },
+  {
+    "author_email": "mark.roberts@example.com",
+    "title": "Introduction to CI/CD: Automating Software Development",
+    "short_description": "Continuous Integration and Continuous Deployment (CI/CD) help automate software development, reducing errors and improving deployment speed.",
+    "description": "CI/CD pipelines are essential for modern software development, allowing teams to automate testing, integration, and deployment. This article breaks down the core components of CI/CD, including version control, automated testing, and deployment strategies. We explore popular CI/CD tools like GitHub Actions, Jenkins, and GitLab CI/CD, along with best practices for implementing a robust CI/CD pipeline. Whether you’re new to DevOps or looking to optimize your existing workflow, this guide will help you streamline software development and deployment.",
+    "category": "DevOps",
+    "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*T6V8VpHZw2oL9XGHvYqGJA.jpeg",
+    "date": "Mar 15, 2025"
+  },
+  {
+    "author_email": "sophia.brown@example.com",
+    "title": "Mastering TypeScript: Why Every JavaScript Developer Should Learn It",
+    "short_description": "TypeScript enhances JavaScript with static typing, making code more predictable and maintainable. Learn why it’s becoming essential for modern web development.",
+    "description": "TypeScript is an open-source superset of JavaScript that introduces static typing, interfaces, and better tooling support. This article explains why TypeScript is gaining popularity among developers and how it improves code quality and maintainability. We cover key TypeScript features such as type inference, interfaces, generics, and modules. Additionally, we discuss best practices for migrating from JavaScript to TypeScript and integrating it into modern web frameworks like React and Angular.",
+    "category": "Programming Languages",
+    "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*U3VXp5iG3oL9XGHvZ7CqXA.jpeg",
+    "date": "Mar 20, 2025"
+  },
+  {
+    "author_email": "ryan.miller@example.com",
+    "title": "Edge Computing: The Future of Low-Latency Applications",
+    "short_description": "Edge computing moves computation closer to the data source, reducing latency and improving performance for real-time applications like IoT and AI.",
+    "description": "Edge computing is revolutionizing how data is processed by bringing computation closer to the source, reducing reliance on centralized cloud servers. This article explores how edge computing improves speed, security, and scalability for applications such as IoT, AI, and autonomous vehicles. We discuss the differences between edge computing and cloud computing, real-world use cases, and emerging technologies that are shaping the future of distributed computing. By the end, you'll understand how to leverage edge computing for building efficient, low-latency applications.",
+    "category": "Emerging Technologies",
+    "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*W7KpZl3oL9XGHvT6V8YA.jpeg",
+    "date": "Mar 25, 2025"
+  },
+  {
+    "author_email": "david.anderson@example.com",
+    "title": "Web Performance Optimization: Speeding Up Your Website",
+    "short_description": "Website speed is crucial for user experience and SEO. Learn how to optimize your site’s performance for faster load times and better engagement.",
+    "description": "A slow website can lead to high bounce rates and poor user experience. This article explores key techniques for improving web performance, including image optimization, lazy loading, caching strategies, and minimizing render-blocking resources. We also cover how tools like Lighthouse, WebPageTest, and Chrome DevTools can help analyze and enhance page speed. By implementing these best practices, developers can build high-performing websites that retain users and improve SEO rankings.",
+    "category": "Web Performance",
+    "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*z5Y6R9J8XwQ9X2V8YA.jpeg",
+    "date": "Mar 30, 2025"
+  },
+  {
+    "author_email": "olivia.martin@example.com",
+    "title": "The Role of AI in Software Development",
+    "short_description": "Artificial Intelligence is transforming software development by automating coding, testing, and debugging. Explore how AI-powered tools are shaping the industry.",
+    "description": "AI is revolutionizing the software development process by automating repetitive tasks, improving code quality, and enhancing developer productivity. This article explores AI-driven code generation tools like GitHub Copilot, automated testing frameworks, and intelligent debugging assistants. We also discuss the ethical considerations and challenges of AI in development, including bias in AI models and the impact on job roles. Whether you're a developer or a tech enthusiast, this guide will help you understand AI’s role in shaping the future of software engineering.",
+    "category": "Artificial Intelligence",
+    "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*XqY7R8K9J2V8YAqT6W7Z.jpeg",
+    "date": "Apr 5, 2025"
+  },
+  {
+    "author_email": "william.thomas@example.com",
+    "title": "Cybersecurity Best Practices for Developers",
+    "short_description": "Security is a critical aspect of software development. Learn how to write secure code and protect applications from common vulnerabilities.",
+    "description": "Cybersecurity is a growing concern for developers as cyber threats become more sophisticated. This article covers essential security practices such as input validation, secure authentication, and protecting against SQL injection, XSS, and CSRF attacks. We also explore the importance of HTTPS, encryption, and security headers in web applications. By following these best practices, developers can build secure applications that protect user data and prevent potential security breaches.",
+    "category": "Cybersecurity",
+    "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*KpY9X2W8YAqT6V7ZJ2R8.jpeg",
+    "date": "Apr 10, 2025"
+  },
+  {
+    "author_email": "charlotte.white@example.com",
+    "title": "Getting Started with Web3 and Blockchain Development",
+    "short_description": "Web3 is redefining the internet with decentralization and blockchain technology. Learn how to start building dApps and smart contracts.",
+    "description": "Web3 is transforming the internet by introducing decentralized applications (dApps) and smart contracts. This article provides a beginner-friendly introduction to blockchain development, covering Ethereum, Solidity, and decentralized finance (DeFi). We explore how to set up a blockchain development environment, deploy smart contracts, and integrate with Web3.js or Ethers.js. Whether you're a developer looking to enter the blockchain space or just curious about the future of the internet, this guide will provide the foundational knowledge you need.",
+    "category": "Blockchain",
+    "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*V8YAqT6W7ZJ2R8X2W9Kp.jpeg",
+    "date": "Apr 15, 2025"
+  },
+  {
+    "author_email": "ethan.harris@example.com",
+    "title": "The Evolution of JavaScript: From ES5 to ESNext",
+    "short_description": "JavaScript has evolved significantly over the years. Explore the major changes from ES5 to the latest ESNext features.",
+    "description": "JavaScript has undergone significant transformations since the introduction of ES5, introducing modern features like arrow functions, async/await, destructuring, and modules. This article provides an overview of JavaScript’s evolution, covering key updates in ES6, ES7, and beyond. We also explore how new features enhance code readability, performance, and maintainability. By understanding these advancements, developers can write cleaner, more efficient JavaScript and stay ahead in modern web development.",
+    "category": "JavaScript",
+    "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*W7ZJ2R8X2V9YAqT6KpY.jpeg",
+    "date": "Apr 20, 2025"
+  },
+  {
+    "author_email": "liam.walker@example.com",
+    "title": "Microservices vs Monolithic Architecture: Which One to Choose?",
+    "short_description": "Microservices and monolithic architectures have distinct advantages and trade-offs. Learn which one suits your project best.",
+    "description": "Choosing the right architecture is crucial for software scalability and maintainability. This article explores the differences between microservices and monolithic architectures, discussing their pros and cons in terms of scalability, deployment, and team collaboration. We cover real-world examples of companies transitioning from monolithic to microservices, the challenges they faced, and the best practices for implementing each architecture.",
+    "category": "Software Architecture",
+    "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*YqT6KpW7ZJ2R8X2V9YA.jpeg",
+    "date": "Apr 25, 2025"
+  },
+  {
+    "author_email": "ava.smith@example.com",
+    "title": "Top JavaScript Frameworks in 2025: Which One Should You Learn?",
+    "short_description": "JavaScript frameworks continue to evolve. Discover the top frameworks in 2025 and which one is best for your projects.",
+    "description": "JavaScript frameworks like React, Vue, Angular, and Svelte dominate modern web development, but choosing the right one can be challenging. This article provides an in-depth comparison of the top frameworks in 2025, examining performance, ease of learning, ecosystem support, and real-world use cases. Whether you're a beginner or an experienced developer, this guide will help you decide which framework aligns with your development goals.",
+    "category": "JavaScript",
+    "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*X2V9YAqT6KpW7ZJ2R8.jpeg",
+    "date": "May 1, 2025"
+  },
+  {
+    "author_email": "noah.johnson@example.com",
+    "title": "The Future of Cloud Computing: Trends to Watch in 2025",
+    "short_description": "Cloud computing is constantly evolving. Explore the latest trends shaping the future of cloud technology in 2025.",
+    "description": "Cloud computing continues to drive digital transformation across industries. In this article, we explore key trends such as serverless computing, edge computing, AI-driven cloud services, and multi-cloud strategies. We also discuss the impact of cloud security, sustainability, and cost optimization. Whether you’re a developer, IT professional, or business leader, understanding these trends will help you stay ahead in the evolving cloud landscape.",
+    "category": "Cloud Computing",
+    "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*W7ZJ2R8X2V9YAqT6KpY.jpeg",
+    "date": "May 7, 2025"
+  },
+  {
+    "author_email": "mia.wilson@example.com",
+    "title": "State Management in React: Redux vs Context API vs Recoil",
+    "short_description": "State management is crucial for React applications. Compare Redux, Context API, and Recoil to choose the right solution for your project.",
+    "description": "Managing state efficiently in React applications is essential for performance and maintainability. This article compares popular state management solutions: Redux, Context API, and Recoil. We analyze their use cases, advantages, and performance impacts. Additionally, we provide real-world examples and best practices to help developers decide which approach best fits their needs.",
+    "category": "React",
+    "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*KpW7ZJ2R8X2V9YAqT6.jpeg",
+    "date": "May 12, 2025"
+  },
+  {
+    "author_email": "james.baker@example.com",
+    "title": "Understanding WebAssembly (WASM): The Future of High-Performance Web Apps",
+    "short_description": "WebAssembly (WASM) allows developers to run high-performance code in the browser. Learn how it works and its potential applications.",
+    "description": "WebAssembly (WASM) is transforming web development by enabling near-native performance in the browser. This article explains how WASM works, its advantages over JavaScript for computation-heavy tasks, and its use cases in gaming, video editing, and scientific computing. We also explore how developers can get started with WebAssembly using Rust, C++, and AssemblyScript.",
+    "category": "Web Development",
+    "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*R8X2V9YAqT6KpW7ZJ2.jpeg",
+    "date": "May 18, 2025"
+  }
+]

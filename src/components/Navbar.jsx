@@ -6,6 +6,7 @@ import { ThemeContext } from "../provider/ThemeProvider";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { FiLogIn } from "react-icons/fi";
 import { Avatar } from "flowbite-react";
+import Logo from "./Logo";
 
 const Navbar = () => {
   const { user, handleLogout } = useContext(AuthContext);
@@ -37,13 +38,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between">
         {/* Logo */}
-        <Link
-          to={"/"}
-          className="flex-shrink-0 text-xl font-bold flex items-center gap-2 text-text-light dark:text-text-dark"
-        >
-          <img src="/favicon.png" className="h-8 w-8" alt="Logo" />
-          <span className="text-xl font-semibold">TechTrails</span>
-        </Link>
+        <Logo />
 
         {/* Center Navigation Links - Hidden on mobile */}
         <div className="hidden md:flex items-center justify-center space-x-8">

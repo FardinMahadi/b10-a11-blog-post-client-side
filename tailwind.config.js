@@ -12,32 +12,32 @@ export default {
     extend: {
       colors: {
         background: {
-          light: "#F8FAFC",
-          dark: "#0D1321",
+          light: "#FFFFFF",
+          dark: "#111827", // Darker gray for better contrast
           secondary: {
-            light: "#E2E8F0",
-            dark: "#1E293B",
+            light: "#F3F4F6",
+            dark: "#1F2937",
           },
         },
         text: {
-          light: "#475569",
-          dark: "#E2E8F0",
+          light: "#374151", // Darker for better readability
+          dark: "#F9FAFB",
           secondary: {
-            light: "#1E293B",
-            dark: "#94A3B8",
+            light: "#4B5563",
+            dark: "#D1D5DB",
           },
         },
         primary: {
-          light: "#2563EB",
+          light: "#3B82F6", // Bright blue
           dark: "#60A5FA",
         },
         secondary: {
-          light: "#64748B",
-          dark: "#A0AEC0", // Adjusted for better contrast
+          light: "#6B7280",
+          dark: "#9CA3AF",
         },
         accent: {
-          light: "#14B8A6", // Teal for Highlights (Good)
-          dark: "#06B6D4", // More vibrant cyan for a glowing effect
+          light: "#10B981", // Emerald
+          dark: "#34D399", // Lighter emerald for dark mode
         },
       },
 

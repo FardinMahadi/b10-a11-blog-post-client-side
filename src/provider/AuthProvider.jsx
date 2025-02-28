@@ -123,7 +123,6 @@ const AuthProvider = ({ children }) => {
       .get("/blogs.json")
       .then((response) => {
         setBlogs(response.data);
-        console.log(response.data);
       })
       .catch((err) => {
         console.log(err.message);

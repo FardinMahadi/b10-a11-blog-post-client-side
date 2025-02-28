@@ -9,6 +9,13 @@ import ErrorPage from "../pages/ErrorPage";
 import AuthLayout from "./../layouts/AuthLayout";
 import SignUp from "./../pages/SignUp";
 import Login from "../pages/Login";
+import BlogDetails from "../pages/BlogDetails";
+
+const loadBlogDetails = async ({ params }) => {
+  const response = await fetch(`http://localhost:5000/blog/${params.id}`);
+  const data = await response.json();
+  return data;
+};
 
 const router = createBrowserRouter([
   {
@@ -35,6 +42,11 @@ const router = createBrowserRouter([
       {
         path: "wishlist",
         element: <Wishlist />,
+      },
+      {
+        path: "/blog/:id",
+        element: <BlogDetails />,
+        loader: loadBlogDetails,
       },
     ],
   },

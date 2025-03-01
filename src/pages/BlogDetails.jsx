@@ -1,35 +1,30 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import CardSkeleton from "../components/CardSkeleton";
+import Aside from "../components/Aside";
 
 const BlogDetails = () => {
   const blog = useLoaderData();
   const [loading, setLoading] = useState(true);
 
-  const [asideBlog, setAsideBlog] = useState();
-
+  // Simulate loading time for demonstration purposes
   useEffect(() => {
-    axios.get("http://localhost:5000/recentblogs").then((res) => {
-      setAsideBlog(res.data);
-      setLoading(false);
-    });
+    const timer = setTimeout(() => setLoading(false), 1000); // Adjust time as needed
+    return () => clearTimeout(timer);
   }, []);
 
   if (loading) {
     return (
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 container mx-auto px-4 py-8 my-20">
         <div className="md:col-span-2">
-          <CardSkeleton baseColor="#f0f0f0" highlightColor="#e3e3e3" />
+          <CardSkeleton />
+          <div className="mt-4">
+            <CardSkeleton />
+          </div>
         </div>
         <div className="md:col-span-1">
           {[1, 2, 3].map((index) => (
-            <CardSkeleton
-              key={index}
-              baseColor="#f0f0f0"
-              highlightColor="#e3e3e3"
-              className="mb-6"
-            />
+            <CardSkeleton key={index} className="mb-6" />
           ))}
         </div>
       </div>
@@ -73,21 +68,7 @@ const BlogDetails = () => {
       </main>
 
       {/* aside */}
-      <aside className="md:col-span-1">
-        {asideBlog?.map((blog) => (
-          <div
-            key={blog._id}
-            className="mb-6 p-4 rounded-lg shadow-sm hover:dark:text-white border border-transparent hover:border-black hover:dark:border-white box-content"
-          >
-            <h3 className="text-xl font-semibold mb-2 text-text-secondary-light dark:text-text-secondary-dark">
-              {blog.title}
-            </h3>
-            <p className="text-text-secondary-light dark:text-gray-600 line-clamp-2">
-              {blog.short_description}
-            </p>
-          </div>
-        ))}
-      </aside>
+      <Aside />
     </div>
   );
 };

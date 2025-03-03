@@ -1,13 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { FiLogIn } from "react-icons/fi";
-import { FcGoogle } from "react-icons/fc";
 import { TextInput, Label } from "flowbite-react";
 import { AuthContext } from "../provider/AuthProvider";
 import ExtraLogin from "../components/ExtraLogin";
 
 const Login = () => {
-  const { handleLogIn, handleGoogleLogin } = useContext(AuthContext);
+  const { handleLogIn } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();

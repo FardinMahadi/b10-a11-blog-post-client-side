@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import CardSkeleton from "../components/CardSkeleton";
 import Aside from "../components/Aside";
+import fallbackAvatar from "../assets/user.png";
 
 const BlogDetails = () => {
   const blog = useLoaderData();
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   // Simulate loading time for demonstration purposes
   useEffect(() => {
@@ -13,14 +15,20 @@ const BlogDetails = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  // Error handling for data fetching
+  if (error) {
+    return (
+      <div className="container mx-auto px-4 py-8 my-20">
+        <p>Error loading blog: {error.message}</p>
+      </div>
+    );
+  }
+
   if (loading) {
     return (
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 container mx-auto px-4 py-8 my-20">
         <div className="md:col-span-2">
           <CardSkeleton />
-          <div className="mt-4">
-            <CardSkeleton />
-          </div>
         </div>
         <div className="md:col-span-1">
           {[1, 2, 3].map((index) => (
@@ -47,17 +55,26 @@ const BlogDetails = () => {
             {blog.title}
           </h1>
           <div className="flex items-center text-text-light dark:text-text-secondary-dark mb-4">
+            <img
+              src={blog.author_avatar || fallbackAvatar}
+              alt={`Avatar of ${blog.author_name}`}
+              className="w-8 rounded-full mr-4"
+            />
             <span className="mr-4">By {blog.author_name}</span>
             <span className="mr-4">•</span>
             <span className="mr-4">
-              {new Date(blog.date).toLocaleDateString()}
+              {new Date(blog.date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
             </span>
             <span className="mr-4">•</span>
             <span>{blog.category}</span>
           </div>
           <img
             src={blog.image}
-            alt={blog.title}
+            alt={`Image for ${blog.title}`}
             className="w-full object-cover rounded-lg mb-6"
           />
           <p className="text-lg mb-6 text-text-light dark:text-text-secondary-dark">

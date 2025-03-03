@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import {
   getAuth,
   GoogleAuthProvider,
@@ -128,6 +128,8 @@ const AuthProvider = ({ children }) => {
         console.log(err.message);
       });
   }, []);
+
+  console.log(user);
 
   const authInfo = {
     user,

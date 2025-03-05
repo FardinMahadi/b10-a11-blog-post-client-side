@@ -9,13 +9,11 @@ const BlogDetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Simulate loading time for demonstration purposes
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1000); // Adjust time as needed
+    const timer = setTimeout(() => setLoading(false), 1000);
     return () => clearTimeout(timer);
   }, []);
 
-  // Error handling for data fetching
   if (error) {
     return (
       <div className="container mx-auto px-4 py-8 my-20">

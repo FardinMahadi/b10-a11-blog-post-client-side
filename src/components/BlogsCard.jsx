@@ -48,8 +48,6 @@ const BlogsCard = ({ blog }) => {
             className="flex items-center gap-2 px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-md transition-colors"
             onClick={(e) => {
               e.preventDefault();
-              // Add wishlist functionality here
-              console.log("Added to wishlist:", blog._id);
             }}
           >
             <FaHeart /> Wishlist

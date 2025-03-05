@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import axios from "axios";
 
 const AddBlogs = () => {
   const [title, setTitle] = useState("");
@@ -39,8 +40,23 @@ const AddBlogs = () => {
       author_avatar: user.photoURL,
       short_description: createShortDescription(description),
       status,
+      date: new Date().toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      }),
     };
-    console.log("New Blog Data:", newBlog);
+    axios
+      .post("http://localhost:5000/blogs", newBlog)
+      .then((res) => {
+        toast.success("Blog added successfully!", {
+          draggable: true,
+          transition: Flip,
+        });
+      })
+      .catch((err) => {
+        console.log("Error: ", err.message);
+      });
   };
 
   return (

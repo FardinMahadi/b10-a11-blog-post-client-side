@@ -21,13 +21,19 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [authError, setAuthError] = useState("");
-  const [blogs, setBlogs] = useState([]);
 
-  // To check auth state
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      console.log(currentUser);
+
       setLoading(false);
+
+      axios
+        .get(`http://localhost:5000/users?email=${currentUser.email}`)
+        .then((res) => {
+          setUser(res.data);
+        });
     });
 
     return () => unsubscribe();
@@ -65,7 +71,6 @@ const AuthProvider = ({ children }) => {
       const response = await axios.get(
         `http://localhost:5000/users?email=${user.email}`
       );
-      console.log(response);
 
       return { success: true, user: userCredential.user };
     } catch (err) {
@@ -117,19 +122,6 @@ const AuthProvider = ({ children }) => {
   };
 
   // resources related stuffes
-  // blogs data fetch
-  useEffect(() => {
-    axios
-      .get("/blogs.json")
-      .then((response) => {
-        setBlogs(response.data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, []);
-
-  console.log(user);
 
   const authInfo = {
     user,
@@ -142,7 +134,6 @@ const AuthProvider = ({ children }) => {
     handleLogIn,
     handleGoogleLogin,
     handleLogout,
-    blogs,
   };
 
   if (loading) {

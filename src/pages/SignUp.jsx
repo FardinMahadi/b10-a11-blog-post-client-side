@@ -45,7 +45,6 @@ const SignUp = () => {
 
       await axios.post("http://localhost:5000/users", newUser);
 
-      console.log("User signed up successfully!");
       navigate("/");
     } catch (err) {
       setAuthError(err.message);

@@ -16,8 +16,6 @@ const Navbar = () => {
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  console.log(user);
-
   const toggleUserMenu = () => {
     setShowUserMenu(!showUserMenu);
   };

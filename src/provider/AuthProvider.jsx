@@ -27,17 +27,41 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       console.log(currentUser);
 
-      setLoading(false);
+      if (currentUser) {
+        axios
+          .get(`http://localhost:5000/users?email=${currentUser.email}`)
+          .then((res) => {
+            // If user data is not found, upload user data
+            if (!res.data) {
+              return uploadUserData({
+                email: currentUser.email,
+                name: currentUser.displayName,
+                avatar: currentUser.photoURL,
+              });
+            } else {
+              setUser(res.data); // Set user data if found
+            }
+          })
+          .catch((err) => {
+            console.log("Error fetching user data:", err);
+          });
+      }
 
-      axios
-        .get(`http://localhost:5000/users?email=${currentUser.email}`)
-        .then((res) => {
-          setUser(res.data);
-        });
+      setLoading(false);
     });
 
     return () => unsubscribe();
   }, []);
+
+  // Function to upload user data
+  const uploadUserData = async (userData) => {
+    try {
+      await axios.post("http://localhost:5000/users", userData);
+      console.log("User data uploaded successfully");
+    } catch (error) {
+      console.error("Error uploading user data:", error.message);
+    }
+  };
 
   const handleSignUp = async (email, password) => {
     setLoading(true);
@@ -87,6 +111,17 @@ const AuthProvider = ({ children }) => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       setUser(result.user);
+
+      // Use result.user.email instead of user.email
+      axios
+        .get(`http://localhost:5000/users?email=${result.user.email}`)
+        .then((res) => {
+          setUser(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
       console.log("User signed in:", result.user);
     } catch (error) {
       console.error("Google sign-in error:", error.message);

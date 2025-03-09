@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const AddBlogs = () => {
   const [title, setTitle] = useState("");
@@ -39,6 +40,7 @@ const AddBlogs = () => {
       author_name: user.displayName,
       author_avatar: user.photoURL,
       short_description: createShortDescription(description),
+      description,
       status,
       date: new Date().toLocaleDateString("en-US", {
         year: "numeric",

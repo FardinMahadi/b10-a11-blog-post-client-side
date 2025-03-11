@@ -111,12 +111,18 @@ const AuthProvider = ({ children }) => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       setUser(result.user);
+      console.log(result.user);
 
       // Use result.user.email instead of user.email
       axios
-        .get(`http://localhost:5000/users?email=${result.user.email}`)
+        .post(`http://localhost:5000/users`, {
+          displayName: result?.user.displayName,
+          photoURL: result?.user.photoURL,
+          email: result.user.email,
+        })
         .then((res) => {
           setUser(res.data);
+          console.log(res);
         })
         .catch((err) => {
           console.log(err);

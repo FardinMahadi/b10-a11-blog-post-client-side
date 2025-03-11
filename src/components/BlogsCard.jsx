@@ -1,7 +1,31 @@
 import { Link } from "react-router-dom";
 import { FaEye, FaHeart } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
+import axios from "axios";
 
 const BlogsCard = ({ blog }) => {
+  const { user } = useContext(AuthContext);
+
+  const handleWishList = (e) => {
+    e.preventDefault();
+    if (user) {
+      axios
+        .patch("http://localhost:5000/wishlist", {
+          email: user.email,
+          _id: blog?._id,
+        })
+        .then((response) => {
+          console.log("Wishlist updated successfully:", response.data);
+        })
+        .catch((error) => {
+          console.error("Error updating wishlist:", error.message);
+        });
+    } else {
+      console.log("User is not logged in.");
+    }
+  };
+
   return (
     <div className="bg-background-secondary-light hover:bg-background-light dark:bg-background-secondary-dark hover:dark:bg-background-dark rounded-lg shadow-md hover:shadow-none overflow-hidden ">
       <img
@@ -46,9 +70,7 @@ const BlogsCard = ({ blog }) => {
           </Link>
           <button
             className="flex items-center gap-2 px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-md transition-colors"
-            onClick={(e) => {
-              e.preventDefault();
-            }}
+            onClick={handleWishList}
           >
             <FaHeart /> Wishlist
           </button>

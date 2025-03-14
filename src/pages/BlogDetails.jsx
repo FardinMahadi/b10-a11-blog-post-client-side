@@ -87,7 +87,7 @@ const BlogDetails = () => {
 
         {/* Comment section */}
         <div>
-          <CommentSection blogId={blog._id} />
+          <CommentSection blogId={blog._id} blogWriter={blog.author_email} />
         </div>
       </main>
 

@@ -11,6 +11,7 @@ import {
 import app from "./../firebase/firebase.config";
 import Loading from "../components/Loading";
 import axios from "axios";
+import { SiTrueup } from "react-icons/si";
 
 export const AuthContext = createContext(null);
 
@@ -25,11 +26,12 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log(currentUser);
 
       if (currentUser) {
         axios
-          .get(`http://localhost:5000/users?email=${currentUser.email}`)
+          .get(`http://localhost:5000/users?email=${currentUser.email}`, {
+            withCredentials: true,
+          })
           .then((res) => {
             // If user data is not found, upload user data
             if (!res.data) {
@@ -39,7 +41,7 @@ const AuthProvider = ({ children }) => {
                 avatar: currentUser.photoURL,
               });
             } else {
-              setUser(res.data); // Set user data if found
+              setUser(res.data);
             }
           })
           .catch((err) => {
@@ -47,7 +49,25 @@ const AuthProvider = ({ children }) => {
           });
       }
 
-      setLoading(false);
+      if (currentUser?.email) {
+        const user = { email: currentUser.email };
+
+        axios
+          .post("http://localhost:5000/jwt", user, { withCredentials: true })
+          .then((res) => {
+            console.log("login token", res.data);
+            setLoading(false);
+          });
+      } else {
+        axios
+          .post("http://localhost:5000/logout", {}, { withCredentials: true })
+          .then((res) => {
+            console.log("logout", res.data);
+            setLoading(false);
+          });
+      }
+
+      console.log("state captured", currentUser);
     });
 
     return () => unsubscribe();

@@ -26,10 +26,6 @@ const AuthProvider = ({ children }) => {
   const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
-    console.log(user);
-  }, [user]);
-
-  useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
 
@@ -83,17 +79,24 @@ const AuthProvider = ({ children }) => {
           .then((res) => {
             console.log("login token", res.data);
             setLoading(false);
+          })
+          .catch((error) => {
+            console.error("Error during login:", error);
+            setLoading(false);
           });
       } else {
         axios
-          .post(
-            "https://blog-post-server-side.vercel.app/logout",
-            {},
-            { withCredentials: true }
-          )
+          .post("https://blog-post-server-side.vercel.app/logout", user, {
+            withCredentials: true,
+          })
           .then((res) => {
             console.log("logout", res.data);
             setLoading(false);
+          })
+          .catch((error) => {
+            console.error("Error during logout:", error);
+            setLoading(false);
+            // Handle error (e.g., show error message to user)
           });
       }
 

@@ -11,7 +11,7 @@ const CommentShow = ({ blogId }) => {
     const fetchComments = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/comment?blogId=${blogId}`
+          `https://blog-post-server-side.vercel.app/comment?blogId=${blogId}`
         );
         console.log(res.data);
 

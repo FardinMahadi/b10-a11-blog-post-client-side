@@ -11,7 +11,7 @@ const RecentBlogs = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/recentblogs")
+      .get("https://blog-post-server-side.vercel.app/recentblogs")
       .then((res) => {
         setRecentBlogs(res.data);
         setLoading(false);

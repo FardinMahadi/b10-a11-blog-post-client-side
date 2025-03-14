@@ -43,7 +43,10 @@ const SignUp = () => {
       const newUser = { displayName: name, email, photoURL: null };
       setUser(newUser);
 
-      await axios.post("http://localhost:5000/users", newUser);
+      await axios.post(
+        "https://blog-post-server-side.vercel.app/users",
+        newUser
+      );
 
       navigate("/");
     } catch (err) {

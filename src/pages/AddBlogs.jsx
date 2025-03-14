@@ -49,7 +49,7 @@ const AddBlogs = () => {
       }),
     };
     axios
-      .post("http://localhost:5000/blogs", newBlog)
+      .post("https://blog-post-server-side.vercel.app/blogs", newBlog)
       .then((res) => {
         toast.success("Blog added successfully!", {
           draggable: true,

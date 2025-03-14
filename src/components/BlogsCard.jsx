@@ -11,7 +11,7 @@ const BlogsCard = ({ blog }) => {
     e.preventDefault();
     if (user) {
       axios
-        .patch("http://localhost:5000/wishlist", {
+        .patch("https://blog-post-server-side.vercel.app/wishlist", {
           email: user.email,
           _id: blog?._id,
         })

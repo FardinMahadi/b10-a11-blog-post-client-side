@@ -12,7 +12,9 @@ const AllBlogs = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/blogs");
+        const res = await axios.get(
+          "https://blog-post-server-side.vercel.app/blogs"
+        );
         setBlogs(res.data);
         setLoading(false);
       } catch (error) {

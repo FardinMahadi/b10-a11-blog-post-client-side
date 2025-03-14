@@ -8,10 +8,12 @@ const Aside = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/recentblogs").then((res) => {
-      setAsideBlog(res.data);
-      setLoading(false);
-    });
+    axios
+      .get("https://blog-post-server-side.vercel.app/recentblogs")
+      .then((res) => {
+        setAsideBlog(res.data);
+        setLoading(false);
+      });
   }, []);
 
   if (loading) {

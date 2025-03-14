@@ -6,7 +6,7 @@ import { getAuth, signOut } from "firebase/auth";
 import app from "../firebase/firebase.config";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://blog-post-server-side.vercel.app",
   withCredentials: true,
 });
 

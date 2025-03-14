@@ -16,7 +16,7 @@ const Wishlist = () => {
       if (user) {
         try {
           const res = await axios.get(
-            `http://localhost:5000/wishlist?email=${user.email}`
+            `https://blog-post-server-side.vercel.app/wishlist?email=${user.email}`
           );
           console.log("Fetched wishlist:", res.data);
           setWishlistBlog(res.data);

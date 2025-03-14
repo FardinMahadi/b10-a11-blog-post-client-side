@@ -24,13 +24,16 @@ const PutComment = ({ blogId }) => {
     setError(null);
 
     try {
-      const res = await axios.post("http://localhost:5000/comment", {
-        blogId,
-        userId: user._id,
-        userImg: user.photoURL,
-        userName: user.displayName,
-        comment,
-      });
+      const res = await axios.post(
+        "https://blog-post-server-side.vercel.app/comment",
+        {
+          blogId,
+          userId: user._id,
+          userImg: user.photoURL,
+          userName: user.displayName,
+          comment,
+        }
+      );
       console.log("Comment posted:", res.data);
       setComment("");
     } catch (error) {

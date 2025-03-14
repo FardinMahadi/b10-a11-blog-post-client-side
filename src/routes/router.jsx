@@ -12,7 +12,9 @@ import Login from "../pages/Login";
 import BlogDetails from "../pages/BlogDetails";
 
 const loadBlogDetails = async ({ params }) => {
-  const response = await fetch(`http://localhost:5000/blog/${params.id}`);
+  const response = await fetch(
+    `https://blog-post-server-side.vercel.app/blog/${params.id}`
+  );
   const data = await response.json();
   return data;
 };

@@ -35,7 +35,7 @@ const AuthProvider = ({ children }) => {
 
       if (currentUser) {
         // axios
-        //   .get(`http://localhost:5000/users?email=${currentUser.email}`, {
+        //   .get(`https://blog-post-server-side.vercel.app/users?email=${currentUser.email}`, {
         //     withCredentials: true,
         //   })
         //   .then((res) => {
@@ -77,14 +77,20 @@ const AuthProvider = ({ children }) => {
         const user = { email: currentUser.email };
 
         axios
-          .post("http://localhost:5000/jwt", user, { withCredentials: true })
+          .post("https://blog-post-server-side.vercel.app/jwt", user, {
+            withCredentials: true,
+          })
           .then((res) => {
             console.log("login token", res.data);
             setLoading(false);
           });
       } else {
         axios
-          .post("http://localhost:5000/logout", {}, { withCredentials: true })
+          .post(
+            "https://blog-post-server-side.vercel.app/logout",
+            {},
+            { withCredentials: true }
+          )
           .then((res) => {
             console.log("logout", res.data);
             setLoading(false);
@@ -100,7 +106,10 @@ const AuthProvider = ({ children }) => {
   // Function to upload user data
   const uploadUserData = async (userData) => {
     try {
-      await axios.post("http://localhost:5000/users", userData);
+      await axios.post(
+        "https://blog-post-server-side.vercel.app/users",
+        userData
+      );
       console.log("User data uploaded successfully");
     } catch (error) {
       console.error("Error uploading user data:", error.message);
@@ -137,7 +146,7 @@ const AuthProvider = ({ children }) => {
 
       // fetch user data according to user email
       const response = await axios.get(
-        `http://localhost:5000/users?email=${user.email}`
+        `https://blog-post-server-side.vercel.app/users?email=${user.email}`
       );
 
       return { success: true, user: userCredential.user };
@@ -159,7 +168,7 @@ const AuthProvider = ({ children }) => {
 
       // Use result.user.email instead of user.email
       axios
-        .post(`http://localhost:5000/users`, {
+        .post(`https://blog-post-server-side.vercel.app/users`, {
           displayName: result?.user.displayName,
           photoURL: result?.user.photoURL,
           email: result.user.email,

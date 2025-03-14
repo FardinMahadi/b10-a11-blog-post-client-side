@@ -12,6 +12,7 @@ import app from "./../firebase/firebase.config";
 import Loading from "../components/Loading";
 import axios from "axios";
 import { SiTrueup } from "react-icons/si";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 export const AuthContext = createContext(null);
 
@@ -22,16 +23,39 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [authError, setAuthError] = useState("");
+  const axiosSecure = useAxiosSecure();
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
 
       if (currentUser) {
-        axios
-          .get(`http://localhost:5000/users?email=${currentUser.email}`, {
-            withCredentials: true,
-          })
+        // axios
+        //   .get(`http://localhost:5000/users?email=${currentUser.email}`, {
+        //     withCredentials: true,
+        //   })
+        //   .then((res) => {
+        //     // If user data is not found, upload user data
+        //     if (!res.data) {
+        //       return uploadUserData({
+        //         email: currentUser.email,
+        //         name: currentUser.displayName,
+        //         avatar: currentUser.photoURL,
+        //       });
+        //     } else {
+        //       setUser(res.data);
+        //     }
+        //   })
+        //   .catch((err) => {
+        //     console.log("Error fetching user data:", err);
+        //   });
+
+        axiosSecure
+          .get(`/users?email=${currentUser.email}`)
           .then((res) => {
             // If user data is not found, upload user data
             if (!res.data) {

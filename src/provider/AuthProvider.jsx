@@ -85,19 +85,19 @@ const AuthProvider = ({ children }) => {
             setLoading(false);
           });
       } else {
-        axios
-          .post("https://blog-post-server-side.vercel.app/logout", user, {
-            withCredentials: true,
-          })
-          .then((res) => {
-            console.log("logout", res.data);
-            setLoading(false);
-          })
-          .catch((error) => {
-            console.error("Error during logout:", error);
-            setLoading(false);
-            // Handle error (e.g., show error message to user)
-          });
+        // axios
+        //   .post("https://blog-post-server-side.vercel.app/logout", user, {
+        //     withCredentials: true,
+        //   })
+        //   .then((res) => {
+        //     console.log("logout", res.data);
+        //     setLoading(false);
+        //   })
+        //   .catch((error) => {
+        //     console.error("Error during logout:", error);
+        //     setLoading(false);
+        //     // Handle error (e.g., show error message to user)
+        //   });
       }
 
       console.log("state captured", currentUser);
